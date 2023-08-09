@@ -74,5 +74,6 @@ dependencies {
 
     implementation(libs.retrofit)
     implementation(libs.retrofit2.converter.gson)
-
+    implementation(libs.glide)
+    runtimeOnly(libs.compiler)
 }
