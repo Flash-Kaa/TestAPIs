@@ -16,6 +16,11 @@
         android:theme="@style/Theme.TestAPIs"
         tools:targetApi="31">
         <activity
+            android:name=".foximageapi.FoxImageAPI"
+            android:exported="false"
+            android:label="@string/title_activity_fox_image_api"
+            android:theme="@style/Theme.TestAPIs" />
+        <activity
             android:name=".DeckOfCardsAPI.DeckOfCardsAPI"
             android:exported="false"
             android:label="@string/title_activity_deck_of_cards_api"

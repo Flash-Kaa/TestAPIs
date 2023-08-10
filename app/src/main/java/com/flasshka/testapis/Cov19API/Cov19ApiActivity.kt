@@ -9,21 +9,20 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.flasshka.testapis.Cov19API.models.MyCountry
 import com.flasshka.testapis.Cov19API.services.CountryService
-import com.flasshka.testapis.Cov19API.services.ServiceBuilder
-import com.flasshka.testapis.Cov19API.ui.theme.TestAPIsTheme
 import com.flasshka.testapis.MainActivity
+import com.flasshka.testapis.ServiceBuilder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -35,7 +34,7 @@ class Cov19ApiActivity : ComponentActivity() {
         setContent {
             loadCountries(LocalContext.current)
             Column (
-                Modifier.verticalScroll(ScrollState(0)).fillMaxSize()
+                Modifier.verticalScroll(ScrollState(0)).fillMaxSize().padding(30.dp)
             ){
                 Draw()
             }
@@ -45,16 +44,10 @@ class Cov19ApiActivity : ComponentActivity() {
 
     @Composable
     fun Draw() {
-        Text(text = "Start Draw")
-
         if(draw.value) {
-            Text("not Null: ${countryList!!.value.size}")
             for (i in countryList!!.value) {
-                Text(text = "${i.country}: ${i.deaths}")
+                Text(text = "${i.country}: ${i.deaths}", fontSize = 20.sp)
             }
-        }
-        else {
-            Text("is Null")
         }
     }
 
@@ -63,7 +56,7 @@ class Cov19ApiActivity : ComponentActivity() {
 
     private fun loadCountries(context: Context) {
         //initiate the service
-        val destinationService  = ServiceBuilder.buildService(CountryService::class.java)
+        val destinationService  = ServiceBuilder("https://disease.sh/v2/").buildService(CountryService::class.java)
         val requestCall =destinationService.getAffectedCountryList()
         //make network call asynchronously
         requestCall.enqueue(object : Callback<List<MyCountry>> {

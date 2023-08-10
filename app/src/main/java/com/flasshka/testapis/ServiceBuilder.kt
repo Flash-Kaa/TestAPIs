@@ -1,4 +1,4 @@
-package com.flasshka.testapis.DeckOfCardsAPI.services
+package com.flasshka.testapis
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

@@ -35,7 +35,6 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -44,7 +43,7 @@ import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.flasshka.testapis.DeckOfCardsAPI.models.CardsImage
 import com.flasshka.testapis.DeckOfCardsAPI.services.CardImageService
-import com.flasshka.testapis.DeckOfCardsAPI.services.ServiceBuilder
+import com.flasshka.testapis.ServiceBuilder
 import com.flasshka.testapis.MainActivity
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
@@ -57,8 +56,7 @@ class DeckOfCardsAPI : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //https://deckofcardsapi.com/api/deck/new/draw/?count=2
-        //https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1
+
         val text = mutableStateOf("3")
         setContent {
             if (!draw.value) {

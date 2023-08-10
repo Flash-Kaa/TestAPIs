@@ -2,4 +2,5 @@
     <string name="app_name">TestAPIs</string>
     <string name="title_activity_cov19_api">Cov19ApiActivity</string>
     <string name="title_activity_deck_of_cards_api">DeckOfCardsAPI</string>
+    <string name="title_activity_fox_image_api">FoxImageAPI</string>
 </resources>

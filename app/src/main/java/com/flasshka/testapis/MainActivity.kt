@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.flasshka.testapis.Cov19API.Cov19ApiActivity
 import com.flasshka.testapis.DeckOfCardsAPI.DeckOfCardsAPI
+import com.flasshka.testapis.foximageapi.FoxImageAPI
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,6 +47,13 @@ class MainActivity : ComponentActivity() {
                     fontSize = 20.sp,
                     context = LocalContext.current,
                     componentActivity = DeckOfCardsAPI()
+                )
+
+                CreateButtonToActivity(
+                    text = "Fox image",
+                    fontSize = 20.sp,
+                    context = LocalContext.current,
+                    componentActivity = FoxImageAPI()
                 )
 
             }
