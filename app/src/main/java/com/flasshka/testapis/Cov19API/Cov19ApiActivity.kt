@@ -44,15 +44,14 @@ class Cov19ApiActivity : ComponentActivity() {
 
     @Composable
     fun Draw() {
-        if(draw.value) {
-            for (i in countryList!!.value) {
+        countryList?.value?.let {
+            for (i in it) {
                 Text(text = "${i.country}: ${i.deaths}", fontSize = 20.sp)
             }
         }
     }
 
     var countryList: MutableState<List<MyCountry>>? = null
-    var draw = mutableStateOf(false)
 
     private fun loadCountries(context: Context) {
         //initiate the service
@@ -65,19 +64,13 @@ class Cov19ApiActivity : ComponentActivity() {
 
                 if (response.isSuccessful){
                     countryList  = mutableStateOf(response.body()!!)
-                    draw.value = true
-                    Log.d("Response", "countrylist size : ${countryList?.value?.size}")
-                    Log.d("Response", countryList?.value?.first()!!.country)
-
-
-                }else{
+                }
+                else{
                     Toast.makeText(context, "Something went wrong ${response.message()}", Toast.LENGTH_SHORT).show()
-                    Log.d("Response", "countrylist size : not successful")
                 }
             }
             override fun onFailure(call: Call<List<MyCountry>>, t: Throwable) {
                 Toast.makeText(context, "Something went wrong $t", Toast.LENGTH_SHORT).show()
-                Log.d("Response", "err")
             }
         })
     }

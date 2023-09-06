@@ -2,6 +2,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
+    kotlin("plugin.serialization") version "1.5.30"
 }
 
 android {
@@ -63,11 +64,13 @@ dependencies {
     implementation(platform(libs.compose.bom))
     implementation(platform(libs.compose.bom))
     implementation(platform(libs.compose.bom))
+    implementation(platform(libs.compose.bom))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
     androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(libs.ui.test.junit4)
+    androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(platform(libs.compose.bom))
@@ -78,4 +81,6 @@ dependencies {
     implementation(libs.retrofit2.converter.gson)
     implementation(libs.glide)
     runtimeOnly(libs.compiler)
+    implementation(libs.okhttp)
+    implementation(libs.kotlinx.serialization.json)
 }

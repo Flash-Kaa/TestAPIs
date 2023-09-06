@@ -25,12 +25,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.flasshka.testapis.Cov19API.Cov19ApiActivity
 import com.flasshka.testapis.DeckOfCardsAPI.DeckOfCardsAPI
+import com.flasshka.testapis.GptMessenger.ChatWithGPT
 import com.flasshka.testapis.foximageapi.FoxImageAPI
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
         setContent {
+            val context = LocalContext.current
+            context.startActivity(Intent(context, ChatWithGPT::class.java))
             Column(
                 modifier = Modifier.verticalScroll(ScrollState(0)).fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally

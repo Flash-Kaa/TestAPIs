@@ -142,8 +142,9 @@ class DeckOfCardsAPI : ComponentActivity() {
             override fun onResponse(call: Call<CardsImage>, response: Response<CardsImage>) {
 
                 if (response.isSuccessful){
-                    deck.value = response.body()!!
-                }else{
+                    deck.value = response.body()
+                }
+                else{
                     Toast.makeText(context, "Something went wrong ${response.message()}", Toast.LENGTH_SHORT).show()
                 }
             }

@@ -99,7 +99,7 @@ class FoxImageAPI : ComponentActivity() {
             override fun onResponse(call: Call<FoxImage>, response: Response<FoxImage>) {
 
                 if (response.isSuccessful){
-                    image.value = response.body()!!
+                    image.value = response.body()
                 }
                 else{
                     Toast.makeText(context, "Something went wrong ${response.message()}", Toast.LENGTH_SHORT).show()
